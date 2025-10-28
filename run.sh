@@ -8,7 +8,7 @@ BUILD_MODE=debug
 BUILD_MODE_CAPITALIZED=$(echo ${BUILD_MODE} | awk '{print toupper(substr($0,1,1)) substr($0,2)}')
 
 # ./gradlew link${BUILD_MODE_CAPITALIZED}SharedOhosArm64 --rerun-tasks
-./gradlew link${BUILD_MODE_CAPITALIZED}SharedBizA link${BUILD_MODE_CAPITALIZED}SharedBizB
+./gradlew link${BUILD_MODE_CAPITALIZED}SharedBizB
 
 cd c-caller
 ~/.konan/dependencies/llvm-19.1.7-aarch64-macos-ohos-2/bin/clang++ \
@@ -16,9 +16,6 @@ cd c-caller
       --target=aarch64-linux-ohos \
       -fPIC -pthread \
       -Wall -Wextra -std=c++17 \
-      -I../build/bin/bizA/${BUILD_MODE}Shared \
-      -L../build/bin/bizA/${BUILD_MODE}Shared \
-      -lbizA \
       -I../build/bin/bizB/${BUILD_MODE}Shared \
       -L../build/bin/bizB/${BUILD_MODE}Shared \
       -lbizB \

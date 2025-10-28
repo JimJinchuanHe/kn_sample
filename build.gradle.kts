@@ -6,33 +6,19 @@ group = "com.example"
 version = "1.0-SNAPSHOT"
 
 kotlin {
-    ohosArm64("bizA") {
-        binaries {
-            sharedLib {
-                baseName = "bizA"
-                freeCompilerArgs += listOf("-Xbinary=emitRuntime=true", "-Xbinary=splitBCfile=false")
-            }
-        }
-    }
-
     ohosArm64("bizB") {
         binaries {
             sharedLib {
                 baseName = "bizB"
-                freeCompilerArgs += listOf("-Xbinary=emitRuntime=true", "-Xbinary=splitBCfile=false")
+                freeCompilerArgs += listOf("-Xbinary=emitRuntime=noruntime", "-Xbinary=splitBCfile=false")
                 linkerOpts += listOf("-L/Users/haoli/Desktop/hjc/c2k-runtime", "-lruntime")
             }
         }
     }
     
     sourceSets {
-        val bizAMain by getting {
-            dependsOn(getByName("commonMain"))
-            dependsOn(getByName("bizBMain"))
-        }
         val bizBMain by getting {
             dependsOn(getByName("commonMain"))
-            // dependsOn(getByName("bizAMain"))
         }
     }
 }
