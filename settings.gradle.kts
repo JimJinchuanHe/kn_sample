@@ -1,6 +1,6 @@
 pluginManagement {
     repositories {
-        maven("/Volumes/disk/git/kmp/20/build/repo")
+        maven("/Users/haoli/Desktop/kmp/KuiklyBase-kotlin/build/repo")
         gradlePluginPortal()
         mavenCentral()
     }
@@ -8,7 +8,7 @@ pluginManagement {
 
 dependencyResolutionManagement {
     repositories {
-        maven("/Volumes/disk/git/kmp/20/build/repo")
+        maven("/Users/haoli/Desktop/kmp/KuiklyBase-kotlin/build/repo")
         mavenCentral()
     }
 }

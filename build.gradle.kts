@@ -20,6 +20,7 @@ kotlin {
             sharedLib {
                 baseName = "bizB"
                 freeCompilerArgs += listOf("-Xbinary=emitRuntime=true", "-Xbinary=splitBCfile=false")
+                linkerOpts += listOf("-L/Users/haoli/Desktop/hjc/c2k-runtime", "-lruntime")
             }
         }
     }

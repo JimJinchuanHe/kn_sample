@@ -11,8 +11,8 @@ BUILD_MODE_CAPITALIZED=$(echo ${BUILD_MODE} | awk '{print toupper(substr($0,1,1)
 ./gradlew link${BUILD_MODE_CAPITALIZED}SharedBizA link${BUILD_MODE_CAPITALIZED}SharedBizB
 
 cd c-caller
-/Users/user/.konan/dependencies/llvm-19.1.7-aarch64-macos-ohos-2/bin/clang++ \
-      --sysroot /Volumes/disk/cache/konan/dependencies/sysroot-ohos-aarch64-6.0.0.858-02 \
+~/.konan/dependencies/llvm-19.1.7-aarch64-macos-ohos-2/bin/clang++ \
+      --sysroot /Users/haoli/.konan/dependencies/sysroot-ohos-aarch64-5.0.11.110 \
       --target=aarch64-linux-ohos \
       -fPIC -pthread \
       -Wall -Wextra -std=c++17 \
