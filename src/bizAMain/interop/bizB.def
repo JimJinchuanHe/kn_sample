@@ -1,0 +1,6 @@
+headers = bizB.h
+headerFilter = bizB.h
+compilerOpts = -I/Users/haoli/Desktop/kmp/kn_samples_add/kn_samples/src/bizAMain/interop
+libraryPaths = /Users/haoli/Desktop/kmp/kn_samples_add
+staticLibraries = 
+libraryPaths.osx = /Users/haoli/Desktop/kmp/kn_samples_add

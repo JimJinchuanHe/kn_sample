@@ -10,17 +10,18 @@ kotlin {
         binaries {
             sharedLib {
                 baseName = "bizA"
-                freeCompilerArgs += listOf("-Xbinary=emitRuntime=true", "-Xbinary=splitBCfile=false")
+                freeCompilerArgs += listOf("-Xbinary=emitRuntime=all", "-Xbinary=splitBCfile=false")
+                linkerOpts += listOf(
+                    "-L/Users/haoli/Desktop/hjc/c2k-runtime", "-lruntime",
+                    "-L/Users/haoli/Desktop/kmp/kn_samples_add", "-lbizB"  // 添加bizB动态库的路径和链接
+                )
             }
         }
-    }
-
-    ohosArm64("bizB") {
-        binaries {
-            sharedLib {
-                baseName = "bizB"
-                freeCompilerArgs += listOf("-Xbinary=emitRuntime=true", "-Xbinary=splitBCfile=false")
-                linkerOpts += listOf("-L/Users/haoli/Desktop/hjc/c2k-runtime", "-lruntime")
+        
+        // 配置 cinterop 来调用 B.so 中的函数
+        compilations["main"].cinterops {
+            val bizB by creating {
+                defFile(project.file("src/bizAMain/interop/bizB.def"))
             }
         }
     }
@@ -28,11 +29,7 @@ kotlin {
     sourceSets {
         val bizAMain by getting {
             dependsOn(getByName("commonMain"))
-            dependsOn(getByName("bizBMain"))
-        }
-        val bizBMain by getting {
-            dependsOn(getByName("commonMain"))
-            // dependsOn(getByName("bizAMain"))
+            // 移除了对bizBMain的依赖
         }
     }
 }
